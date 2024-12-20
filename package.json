@@ -1,0 +1,59 @@
+{
+  "name": "@preachjs/menu",
+  "version": "0.0.0",
+  "description": "Headless Menu for preact",
+  "keywords": [
+    "menu",
+    "preact",
+    "headless",
+    "minimal"
+  ],
+  "license": "MIT",
+  "author": "reaper <ahoy@barelyhuman.dev>",
+  "type": "module",
+  "main": "./dist/index.js",
+  "exports": "./dist/index.js",
+  "types": "./src/index.d.ts",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "sucrase --transforms='typescript,jsx' --jsx-runtime='automatic' --production --jsx-import-source='preact' -d ./dist ./src",
+    "prepack": "npm run build",
+    "package:lint": "publint",
+    "example:build": "node build.js",
+    "example:dev": "node build.js --dev",
+    "test:e2e": "node ./script/e2e-run.js",
+    "test": "echo true",
+    "next": "bumpp",
+    "fix": "prettier --write .",
+    "prepare": "husky"
+  },
+  "prettier": "@barelyhuman/prettier-config",
+  "devDependencies": {
+    "@barelyhuman/prettier-config": "^1.1.0",
+    "@preact/signals": "^1.3.0",
+    "bumpp": "^9.5.1",
+    "cypress": "^13.13.2",
+    "esbuild": "^0.23.0",
+    "husky": "^9.1.4",
+    "nano-staged": "^0.8.0",
+    "preact": "^10.23.2",
+    "prettier": "^3.3.3",
+    "publint": "^0.2.9",
+    "sucrase": "^3.35.0",
+    "typescript": "^5.5.4",
+    "wait-on": "^7.2.0"
+  },
+  "peerDependencies": {
+    "@preact/signals": ">=1.2.2",
+    "preact": ">=10"
+  },
+  "nano-staged": {
+    "*.{js,css,md}": "prettier --write"
+  }
+}
